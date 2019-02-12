@@ -202,7 +202,7 @@ if(${USE_CompiletimeRessources} MATCHES ON)
     
 	message(STATUS "Enabling OpenCL RC..")
 	if(EXISTS "${PROJECT_SOURCE_DIR}/../OCLDaMa/OCL_RC/Debug/OCL_RC.exe")
-		add_custom_command(TARGET katherinetimepix PRE_BUILD COMMAND "${PROJECT_SOURCE_DIR}/../OCLDaMa/OCL_RC/Debug/OCL_RC.exe" "${local_TPX_BASE_PATH}/TimePix/src/opencl" "${local_TPX_BASE_PATH}/shared/include")
+		add_custom_command(TARGET katherinetimepix PRE_BUILD COMMAND "${PROJECT_SOURCE_DIR}/../OCLDaMa/OCL_RC/Debug/OCL_RC.exe" "${PROJECT_SOURCE_DIR}/src/opencl" "${PROJECT_SOURCE_DIR}/include")
 		message(STATUS "OpenCL RC at ${PROJECT_SOURCE_DIR}/../OCLDaMa/OCL_RC/Debug/OCL_RC.exe was registered")
 		add_compile_definitions(__USE_COMPILETIMERESSOURCES__)
 		list(APPEND compiler_defs __USE_COMPILETIMERESSOURCES__)

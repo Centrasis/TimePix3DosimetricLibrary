@@ -20,7 +20,8 @@ static inline int TIMEOUT_MAKRO(int sock, uint32_t timeout_ms) {
 
 #else
 #define _WINSOCKAPI_
-#include "Winsock2.h"
+#include "MultiplattformTypes.h"
+#include <WinSock2.h>
 #define SOCKETTYPE SOCKET
 #define SOCKET_ADDR_T SOCKADDR_IN
 #define CLOSESOCK(sock) if(sock > 0) closesocket(sock)
