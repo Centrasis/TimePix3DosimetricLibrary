@@ -1,0 +1,35 @@
+typedef struct __attribute__((packed)) FShadow
+{
+	uint radiusX;
+	uint radiusY;
+	int2 middle;
+	float direction;
+} FShadow;
+
+typedef struct FImageInfo
+{
+	int width;
+	int height;
+} FImageInfo;
+
+typedef struct FGaussianShadow
+{
+	FShadow mainShadow;
+
+	//factors to shape gaussian
+	float xFactor;
+	float yFactor;
+} FGaussianShadow;
+
+/*typedef struct __attribute__((packed)) FShadowSetup
+{
+	FShadow singleShadows[%shadowCount%];
+} FShadowSetup;*/
+
+int maxInt(int x, int y)
+{
+	if (x > y)
+		return x;
+
+	return y;
+}

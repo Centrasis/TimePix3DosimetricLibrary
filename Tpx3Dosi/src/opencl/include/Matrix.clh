@@ -1,0 +1,56 @@
+//C99 std sucks...
+
+typedef struct Mat2
+{
+   float2 Rows[2];
+} Mat2;
+
+typedef struct Mat3
+{
+   float3 Rows[3];
+} Mat3;
+
+Mat2 buildMat2(float2 r1, float2 r2)
+{
+	Mat2 mat;
+    mat.Rows[0] = r1;
+	mat.Rows[1] = r2;
+	return mat;
+}
+
+Mat2 multiplyMat2(Mat2 lhs, Mat2 rhs)
+{
+    return buildMat2((float2)(lhs.Rows[0].x * rhs.Rows[0].x + lhs.Rows[0].y * rhs.Rows[1].x,
+				            lhs.Rows[0].x * rhs.Rows[0].y + lhs.Rows[0].y * rhs.Rows[1].y),
+					(float2)(lhs.Rows[1].x * rhs.Rows[0].x + lhs.Rows[1].y * rhs.Rows[1].x,
+				            lhs.Rows[1].x * rhs.Rows[0].y + lhs.Rows[1].y * rhs.Rows[1].y));
+}
+
+Mat3 buildMat3(float3 r1, float3 r2, float3 r3)
+{
+	Mat3 mat;
+    mat.Rows[0] = r1;
+	mat.Rows[1] = r2;
+	mat.Rows[2] = r3;
+	return mat;
+}
+
+Mat3 multiplyMat3(Mat3 lhs, Mat3 rhs)
+{
+    return buildMat3((float3)(lhs.Rows[0].x * rhs.Rows[0].x + lhs.Rows[0].y * rhs.Rows[1].x + lhs.Rows[0].z * rhs.Rows[2].x,
+						      lhs.Rows[0].x * rhs.Rows[0].y + lhs.Rows[0].y * rhs.Rows[1].y + lhs.Rows[0].z * rhs.Rows[2].y,
+						      lhs.Rows[0].x * rhs.Rows[0].z + lhs.Rows[0].y * rhs.Rows[1].z + lhs.Rows[0].z * rhs.Rows[2].z),
+				     (float3)(lhs.Rows[1].x * rhs.Rows[0].x + lhs.Rows[1].y * rhs.Rows[1].x + lhs.Rows[1].z * rhs.Rows[2].x,
+				              lhs.Rows[1].x * rhs.Rows[0].y + lhs.Rows[1].y * rhs.Rows[1].y + lhs.Rows[1].z * rhs.Rows[2].y,
+						      lhs.Rows[1].x * rhs.Rows[0].z + lhs.Rows[1].y * rhs.Rows[1].z + lhs.Rows[1].z * rhs.Rows[2].z),
+				     (float3)(lhs.Rows[2].x * rhs.Rows[0].x + lhs.Rows[2].y * rhs.Rows[1].x + lhs.Rows[2].z * rhs.Rows[2].x,
+				              lhs.Rows[2].x * rhs.Rows[0].y + lhs.Rows[2].y * rhs.Rows[1].y + lhs.Rows[2].z * rhs.Rows[2].y,
+					          lhs.Rows[2].x * rhs.Rows[0].z + lhs.Rows[2].y * rhs.Rows[1].z + lhs.Rows[2].z * rhs.Rows[2].z));
+}
+
+float3 multiplyMat3Vec3(Mat3 lhs, float3 rhs)
+{
+    return (float3)(lhs.Rows[0].x * rhs.x + lhs.Rows[0].y * rhs.y + lhs.Rows[0].z * rhs.z, 
+					lhs.Rows[1].x * rhs.x + lhs.Rows[1].y * rhs.y + lhs.Rows[1].z * rhs.z,
+					lhs.Rows[2].x * rhs.x + lhs.Rows[2].y * rhs.y + lhs.Rows[2].z * rhs.z);
+}

@@ -1,0 +1,8 @@
+typedef struct __attribute__((packed)) FDetector
+{
+	uint widthIn_mm;
+	uint heightIn_mm;
+	uint widthIn_px;
+	uint heightIn_px;
+	double2 pixelPer_mm;
+} FDetector;

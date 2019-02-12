@@ -1,0 +1,7 @@
+typedef struct __attribute__((packed)) FTpxPixel
+{
+	struct __attribute__((packed)) Coord { uchar x, y; } coord;
+	uchar fToA;
+	ulong ToA;
+	ushort ToT;
+} FTpxPixel;
