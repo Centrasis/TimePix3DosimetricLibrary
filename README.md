@@ -9,5 +9,5 @@ The main object needed to start a measurement and register for events is the Tpx
 In order to get the calculated results correctly please register for one of the events provided by the PostProcessing thread.
 
 
-# submodules
+# Submodules
 The "katherine" submodule is pointing a branch of the master thesis of Petr Mánek from the university of Prag.
