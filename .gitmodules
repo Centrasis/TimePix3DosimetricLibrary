@@ -1,3 +1,6 @@
 [submodule "OCLDiMa"]
 	path = OCLDaMa
 	url = https://github.com/ftl999/OpenCL_DaMa_Library.git
+[submodule "katherine"]
+	path = katherine
+	url = https://github.com/petrmanek/libkatherine.git
