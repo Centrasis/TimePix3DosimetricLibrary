@@ -1,5 +1,7 @@
 #include "KatherineTimepix3.h"
+#ifndef __SIMULATION__
 #include <katherine/status.h>
+#endif
 
 
 
