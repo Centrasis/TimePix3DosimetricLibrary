@@ -11,7 +11,7 @@ SET(local_TPX_LIBS_REL "")
 
 get_directory_property(hasParent PARENT_DIRECTORY)
 
-option(USE_SYCL "use SYCL (else use OpenCL only)" ON)
+option(USE_SYCL "use SYCL (else use OpenCL only)" OFF)
 option(USE_OpenCL "should OpenCL support should be enabled" ON)
 option(USE_LibKatherine "use the real divice hardware or simulate it" OFF)
 option(USE_CompiletimeRessources "use OpenCL files or compile the files into the binary" OFF)
