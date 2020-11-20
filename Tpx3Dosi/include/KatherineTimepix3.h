@@ -29,14 +29,14 @@ public:
 		return (this->getChipID().length() > 0);
 	}
 
+	friend bool operator== (KatherineTimepix3& lhs, KatherineTimepix3& rhs)
+	{
+		return lhs.getIP().compare(rhs.getIP()) == 0;
+	}
+
 protected:
 	std::string IPAddr;
 	std::string chipID;
 	bool isConnected;
 	katherine_device_t device;
 };
-
-inline bool operator== (KatherineTimepix3& lhs, KatherineTimepix3& rhs)
-{
-	return lhs.getIP().compare(rhs.getIP()) == 0;
-}
