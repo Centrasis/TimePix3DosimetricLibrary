@@ -5,7 +5,7 @@
 #else
   #include "OpenCLExecutor.h"
 #endif  
-#include "opencv/cv.hpp"
+#include "opencv2/core.hpp"
 
 class TimepixDataCLProc :
 	public 

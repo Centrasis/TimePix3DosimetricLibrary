@@ -1,7 +1,7 @@
 #pragma once
 #include "KatherineTpx3.h"
 #include <GeometryTypes.h>
-#include <opencv/cv.hpp>
+#include <opencv2/core.hpp>
 #include <functional>
 #include "OpenCLTypes.h"
 #include "MultiplattformTypes.h"
