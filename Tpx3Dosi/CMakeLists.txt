@@ -20,7 +20,7 @@ option(USE_KATHERINE "use the katherine file format (simulation only)" ON)
 option(USE_ADVACAM "use the ADVACAM file format (simulation only). If turned off the katherine format is assumed." OFF)
 option(DO_STATISTICS "Define if the library should log algorithm statistics while executing" OFF)
 
-find_package( OpenCV REQUIRED )
+find_package( OpenCV REQUIRED PATHS "C:/OpenCV" "C:/Program Files (x86)/OpenCV" )
 
 SET(OpenCV_LIBS_DBG ${OpenCV_LIBS})
 SET(OpenCV_LIBS_REL ${OpenCV_LIBS})
