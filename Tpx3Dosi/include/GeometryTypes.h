@@ -1,6 +1,7 @@
 #pragma once
 #include "MultiplattformTypes.h"
 #include <vector>
+#include <array>
 #include "OpenCLTypes.h"
 
 typedef struct FVector2D
@@ -195,6 +196,10 @@ typedef struct FFilterSetup
 			heightIn_px = 0;
 			pixelPer_mm[0] = 0.0;
 			pixelPer_mm[1] = 0.0;
+		}
+
+		FVector2D getPixelsPer_mm() {
+			return FVector2D((float)pixelPer_mm[0], (float)pixelPer_mm[1]);
 		}
 
 		void calcPixelsPer_mm()
