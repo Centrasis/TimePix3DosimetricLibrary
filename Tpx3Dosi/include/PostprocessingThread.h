@@ -42,21 +42,13 @@ private:
 	struct shadowArguments
 	{
 		std::shared_ptr<OCLMemoryVariable<cl::Image2D>> img;
-		FVector3D angles;
-		FShadowSetup shadows;
+		FVector3D& angles;
+		FShadowSetup& shadows;
 		uint64_t timeStamp_ns;
 
-		shadowArguments()
-		{
-			timeStamp_ns = 0;
-			img = NULL;
-		}
-
-		shadowArguments(std::shared_ptr<OCLMemoryVariable<cl::Image2D>> img, FVector3D& angles, FShadowSetup& shadows, uint64_t timeStamp_ns)
+		shadowArguments(std::shared_ptr<OCLMemoryVariable<cl::Image2D>> img, FVector3D& angles, FShadowSetup& shadows, uint64_t timeStamp_ns) : shadows(shadows), angles(angles)
 		{
 			this->img = img;
-			this->angles = angles;
-			this->shadows = shadows;
 			this->timeStamp_ns = timeStamp_ns;
 		}
 	};
