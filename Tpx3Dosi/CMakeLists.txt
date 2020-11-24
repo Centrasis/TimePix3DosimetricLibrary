@@ -225,6 +225,8 @@ source_group("opencl" REGULAR_EXPRESSION "[\\w*\\.cl]+")
 source_group("opencl/include" FILES ${KATHERINETPX_CL_HEADER})
 source_group("opencl/include" REGULAR_EXPRESSION "[\\w*\\.clh]+")
 
+add_dependencies(katherinetimepix oclDAMA)
+
 target_link_libraries(katherinetimepix debug ${local_TPX_LIBS_DBG})
 target_link_libraries(katherinetimepix optimized local_TPX_LIBS_REL)
 if(${USE_SYCL} MATCHES ON)
