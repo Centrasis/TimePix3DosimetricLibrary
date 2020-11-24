@@ -10,6 +10,8 @@
 #endif
 #ifdef WIN32
   #include <Windows.h>
+#else
+  #include <time.h>
 #endif
 
 #ifdef _DO_ALOGRITHM_STATISTICS_
@@ -535,7 +537,11 @@ void RadiationAngleReconstructor::ExecSelectCalculationResult()
 		}
 		else
 		{
+#ifdef WIN32
 			Sleep(1);
+#else
+			nanosleep((const struct timespec[]) { {0, 1000000L} }, NULL);
+#endif
 		}
 	}
 }
