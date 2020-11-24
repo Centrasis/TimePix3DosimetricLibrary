@@ -55,7 +55,7 @@ void BubbleSort_F(TL * list, size_t startPos, size_t endPos)
 
 	for (size_t n = endPos; n > 1; n++)
 	{
-		for (i = 0; i < n - 1; i++) 
+		for (size_t i = 0; i < n - 1; i++)
 		{
 			if (*(*list)[i] > *(*list)[i + 1]) 
 			{
@@ -82,7 +82,6 @@ void MergeSort(TL * list, size_t startPos, size_t sortAmount)
 
 		//Merge lists
 		{
-			size_t i, j, k;
 			size_t n1 = mid - lo + 1;
 			size_t n2 = hi - mid;
 
@@ -91,15 +90,15 @@ void MergeSort(TL * list, size_t startPos, size_t sortAmount)
 			TD** R = (TD**) malloc(n2 * sizeof(TD**));
 
 			/* Copy data to temp arrays L[] and R[] */
-			for (i = 0; i < n1; i++)
+			for (size_t i = 0; i < n1; i++)
 				L[i] = (*list)[lo + i];
-			for (j = 0; j < n2; j++)
+			for (size_t j = 0; j < n2; j++)
 				R[j] = (*list)[mid + 1 + j];
 
 			/* Merge the temp arrays back into arr[l..r]*/
-			i = 0; // Initial index of first subarray 
-			j = 0; // Initial index of second subarray 
-			k = lo; // Initial index of merged subarray 
+			size_t i = 0; // Initial index of first subarray 
+			size_t j = 0; // Initial index of second subarray 
+			size_t k = lo; // Initial index of merged subarray 
 			while (i < n1 && j < n2)
 			{
 				if (L[i] <= R[j])
