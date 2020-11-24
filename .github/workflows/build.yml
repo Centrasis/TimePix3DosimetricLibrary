@@ -21,7 +21,7 @@ jobs:
         run: sudo apt install libopencv-dev
       - name: Setup OpenCL
         run: sudo apt install ocl-icd-* opencl-headers
-      - name: Make OCL DaMa
+      - name: Make Tpx3 Dosimetrc Lib
         run: cmake -S Tpx3Dosi -B build
-      - name: Build OCL DaMa
+      - name: Build Tpx3 Dosimetrc Lib
         run: cmake --build build --config Release
