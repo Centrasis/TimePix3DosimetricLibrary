@@ -512,7 +512,8 @@ void RadiationAngleReconstructor::ExecCalculation()
 #endif
 	std::thread t([](FOnAngleCalcFinished onAngleCalcFinished, std::shared_ptr<OCLMemoryVariable<cl::Image2D>> integrationResult)
 	{
-		onAngleCalcFinished(integrationResult, RadiationAngleReconstructor::radiationAngleResult, RadiationAngleReconstructor::getShadowSetup());
+		FShadowSetup ret = RadiationAngleReconstructor::getShadowSetup();
+		onAngleCalcFinished(integrationResult, std::ref(RadiationAngleReconstructor::radiationAngleResult), std::ref(ret));
 	}, onAngleCalcFinished, integrationResult);
 	t.detach();
 
