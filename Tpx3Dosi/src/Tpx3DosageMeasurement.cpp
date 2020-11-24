@@ -95,6 +95,12 @@ Tpx3DosageMeasurement::Tpx3DosageMeasurement(std::string AFile)
 	postProcessingThread = new PostprocessingThread(0, CL_PixelBuffer);
 }
 
+inline void readFloat(std::stringstream& ss, float& v) {
+	std::string s;
+	ss >> s;
+	v = std::stof(s);
+}
+
 void Tpx3DosageMeasurement::SetSimulationFileName(std::string name)
 {
 	if(TimePixFile != NULL)
@@ -169,10 +175,9 @@ void Tpx3DosageMeasurement::setFilterSetup(std::string & path, unsigned int px_w
 			if (mode == mPin)
 			{
 				TpxFilters.Filters.back().geometry.push_back(FVector3D());
-				FVector3D vec = TpxFilters.Filters.back().geometry.back();
-				ss >> vec.X;
-				ss >> vec.Z;
-				ss >> vec.Y;
+				readFloat(ss, TpxFilters.Filters.back().geometry.back().X);
+				readFloat(ss, TpxFilters.Filters.back().geometry.back().Z);
+				readFloat(ss, TpxFilters.Filters.back().geometry.back().Y);
 			}
 			if (mode == mDetector)
 			{
@@ -181,9 +186,9 @@ void Tpx3DosageMeasurement::setFilterSetup(std::string & path, unsigned int px_w
 				FVector3D vec[4];
 
 				//convert Z to be the Up-Direction
-				ss >> std::to_string(vec[0].X);
-				ss >> std::to_string(vec[0].Z);
-				ss >> std::to_string(vec[0].Y);
+				readFloat(ss, vec[0].X);
+				readFloat(ss, vec[0].Z);
+				readFloat(ss, vec[0].Y);
 				maxX = minX = vec[0].X;
 				minY = maxY = vec[0].Y;
 
@@ -197,9 +202,9 @@ void Tpx3DosageMeasurement::setFilterSetup(std::string & path, unsigned int px_w
 						throw "Error to less verticies for detector found!\n";
 						exit(-1);
 					}
-					ss2 >> std::to_string(vec[i].X);
-					ss2 >> std::to_string(vec[i].Z);
-					ss2 >> std::to_string(vec[i].Y);
+					readFloat(ss2, vec[i].X);
+					readFloat(ss2, vec[i].Z);
+					readFloat(ss2, vec[i].Y);
 					if (vec[i].X > maxX)
 						maxX = vec[i].X;
 					if (vec[i].X < minX)
@@ -717,12 +722,20 @@ void Tpx3DosageMeasurement::ExecReadData()
 			else
 				pixels.clear();
 #ifndef __SIMULATION__
+#ifdef WIN32
 			Sleep(10);
+#else
+			nanosleep((const struct timespec[]) { {0, 10000000L} }, NULL);
+#endif
 #endif
 		}
 		else
 		{
+#ifdef WIN32
 			Sleep(500);
+#else
+			nanosleep((const struct timespec[]) { {0, 500000000L} }, NULL);
+#endif
 		}
 	}
 }
