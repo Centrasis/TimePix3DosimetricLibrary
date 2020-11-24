@@ -20,7 +20,7 @@ typedef struct katherine_coord {
 
 PACK(
 typedef struct katherine_px_f_toa_tot {
-	katherine_coord_t coord;
+	katherine_coord coord;
 	uint8_t ftoa;
 	uint64_t toa;
 	uint16_t tot;
@@ -59,33 +59,33 @@ typedef struct katherine_px_f_toa_tot {
 
 
 typedef struct katherine_px_toa_tot {
-	katherine_coord_t coord;
+	katherine_coord coord;
 	uint64_t toa;
 	uint8_t hit_count;
 	uint16_t tot;
 } katherine_px_toa_tot_t;
 
 typedef struct katherine_px_f_toa_only {
-	katherine_coord_t coord;
+	katherine_coord coord;
 	uint8_t ftoa;
 	uint64_t toa;
 } katherine_px_f_toa_only_t;
 
 typedef struct katherine_px_toa_only {
-	katherine_coord_t coord;
+	katherine_coord coord;
 	uint64_t toa;
 	uint8_t hit_count;
 } katherine_px_toa_only_t;
 
 typedef struct katherine_px_f_event_itot {
-	katherine_coord_t coord;
+	katherine_coord coord;
 	uint8_t hit_count;
 	uint16_t event_count;
 	uint16_t integral_tot;
 } katherine_px_f_event_itot_t;
 
 typedef struct katherine_px_event_itot {
-	katherine_coord_t coord;
+	katherine_coord coord;
 	uint16_t event_count;
 	uint16_t integral_tot;
 } katherine_px_event_itot_t;
@@ -113,7 +113,7 @@ typedef struct katherine_frame_info {
 typedef struct katherine_acquisition_handlers {
 	std::function<void(const void * pixels, size_t count)> pixels_received;
 	void(*frame_started)(int);
-	void(*frame_ended)(int, bool, const katherine_frame_info_t *);
+	void(*frame_ended)(int, bool, const katherine_frame_info *);
 } katherine_acquisition_handlers_t;
 
 typedef enum katherine_readout_type {
@@ -130,7 +130,7 @@ typedef enum katherine_acquisition_state {
 } katherine_acquisition_state_t;
 
 typedef struct katherine_acquisition {
-	katherine_device_t *device;
+	katherine_device *device;
 
 	char state;
 	char readout_mode;
@@ -149,8 +149,8 @@ typedef struct katherine_acquisition {
 	int completed_frames;
 	size_t dropped_measurement_data;
 
-	katherine_acquisition_handlers_t handlers;
-	katherine_frame_info_t current_frame_info;
+	katherine_acquisition_handlers handlers;
+	katherine_frame_info current_frame_info;
 
 	uint64_t last_toa_offset;
 
