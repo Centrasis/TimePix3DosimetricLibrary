@@ -33,10 +33,10 @@ PixelIntegrator::PixelIntegrator(OCLTypedRingBuffer<katherine_px_f_toa_tot_t, Pi
 	PixelIntegrateKernel.Arguments.push_back(&CL_PixelBufferLen);
 	PixelIntegrateKernel.Arguments.push_back(NULL);	//placeholder for CL image object pointer
 
-	backgroundColor.x = 0;
-	backgroundColor.y = 0;
-	backgroundColor.z = 0;
-	backgroundColor.w = 255;
+	backgroundColor.s[0] = 0;
+	backgroundColor.s[1] = 0;
+	backgroundColor.s[2] = 0;
+	backgroundColor.s[3] = 255;
 
 #ifdef USE_BLUR
 	//Init gaussian Blur Mask

@@ -260,9 +260,9 @@ typedef struct FFilterSetup
 		for (size_t j = 0; j < Filters.size(); j++)
 			for (size_t v = 0; v < Filters[0].geometry.size(); v++)
 			{
-				fg->verticies[i].x = Filters[j].geometry[v].X;
-				fg->verticies[i].y = Filters[j].geometry[v].Y;
-				fg->verticies[i].z = Filters[j].geometry[v].Z;
+				fg->verticies[i].s[0] = Filters[j].geometry[v].X;
+				fg->verticies[i].s[1] = Filters[j].geometry[v].Y;
+				fg->verticies[i].s[2] = Filters[j].geometry[v].Z;
 				i++;
 			}
 
