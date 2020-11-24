@@ -22,6 +22,6 @@ jobs:
       - name: Setup OpenCL
         run: sudo apt install ocl-icd-* opencl-headers
       - name: Make OCL DaMa
-        run: cmake -S . -B build
+        run: cmake -S Tpx3Dosi -B build
       - name: Build OCL DaMa
         run: cmake --build build --config Release
