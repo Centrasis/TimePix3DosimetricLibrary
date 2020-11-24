@@ -169,10 +169,9 @@ void Tpx3DosageMeasurement::setFilterSetup(std::string & path, unsigned int px_w
 			if (mode == mPin)
 			{
 				TpxFilters.Filters.back().geometry.push_back(FVector3D());
-				FVector3D vec = TpxFilters.Filters.back().geometry.back();
-				ss >> std::to_string(vec.X);
-				ss >> std::to_string(vec.Z);
-				ss >> std::to_string(vec.Y);
+				ss >> TpxFilters.Filters.back().geometry.back().X;
+				ss >> TpxFilters.Filters.back().geometry.back().Z;
+				ss >> TpxFilters.Filters.back().geometry.back().Y;
 			}
 			if (mode == mDetector)
 			{
@@ -181,9 +180,9 @@ void Tpx3DosageMeasurement::setFilterSetup(std::string & path, unsigned int px_w
 				FVector3D vec[4];
 
 				//convert Z to be the Up-Direction
-				ss >> std::to_string(vec[0].X);
-				ss >> std::to_string(vec[0].Z);
-				ss >> std::to_string(vec[0].Y);
+				ss >> vec[0].X;
+				ss >> vec[0].Z;
+				ss >> vec[0].Y;
 				maxX = minX = vec[0].X;
 				minY = maxY = vec[0].Y;
 
@@ -197,9 +196,9 @@ void Tpx3DosageMeasurement::setFilterSetup(std::string & path, unsigned int px_w
 						throw "Error to less verticies for detector found!\n";
 						exit(-1);
 					}
-					ss2 >> std::to_string(vec[i].X);
-					ss2 >> std::to_string(vec[i].Z);
-					ss2 >> std::to_string(vec[i].Y);
+					ss2 >> vec[i].X;
+					ss2 >> vec[i].Z;
+					ss2 >> vec[i].Y;
 					if (vec[i].X > maxX)
 						maxX = vec[i].X;
 					if (vec[i].X < minX)
