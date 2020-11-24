@@ -5,8 +5,9 @@
 #include "MultiplattformTypes.h"
 #include <mutex>
 #include <chrono>
+#include <climits>
 
-const size_t NO_ALGORITHM_IDX = MAXINT64;
+const size_t NO_ALGORITHM_IDX = ULLONG_MAX;
 
 class Tpx3RadiationAngleStatistics
 {
