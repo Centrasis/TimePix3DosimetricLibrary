@@ -2,6 +2,7 @@
 #include "MultiplattformTypes.h"
 #include <vector>
 #include <array>
+#include <math.h>
 #include "OpenCLTypes.h"
 
 typedef struct FVector2D
