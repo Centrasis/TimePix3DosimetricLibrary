@@ -18,6 +18,10 @@
   #include "Tpx3AlgorithmStatistics.h"
 #endif
 
+#if defined(MEASURE_DELTATIME)
+#include <chrono>
+#endif
+
 #include "PostprocessingThread.h"
 
 //#define MEASURE_DELTATIME
@@ -122,7 +126,7 @@ RadiationAngleReconstructor::~RadiationAngleReconstructor()
 void RadiationAngleReconstructor::ExecCalculation()
 {
 #if defined(WIN32) && defined(MEASURE_DELTATIME)
-	unsigned long long time1 = GetTickCount64();
+	std::chrono::time_point<std::chrono::high_resolution_clock> time1 = std::chrono::high_resolution_clock::now();
 #endif
 #ifdef _DO_ALOGRITHM_STATISTICS_
 	size_t algorithmIndex = Tpx3AlgorithmStatistics::RadiationAngleAlgorithmStatistics.GetLatestActiveAlgorithmInstance();
@@ -397,7 +401,7 @@ void RadiationAngleReconstructor::ExecCalculation()
 
 	ACQUIRE_MUTEX(staticInnerLock);
 #if defined(WIN32) && defined(MEASURE_DELTATIME)
-	unsigned long long time2 = GetTickCount64();
+	std::chrono::time_point<std::chrono::high_resolution_clock> time2 = std::chrono::high_resolution_clock::now();
 	std::printf("DeltaTime: %u ms\n", time2 - time1);
 #endif
 	std::sort(globalParticles.begin(), globalParticles.end(), [](FShadowParticle& l, FShadowParticle& r) { return l.score > r.score; });

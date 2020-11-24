@@ -5,7 +5,7 @@ Tpx3RadiationAngleStatistics Tpx3AlgorithmStatistics::RadiationAngleAlgorithmSta
 
 Tpx3RadiationAngleStatistics::FAlgorithmInstance::FAlgorithmInstance()
 {
-	startTime = GetTickCount64();
+	startTime = std::chrono::high_resolution_clock::now();
 }
 
 Tpx3RadiationAngleStatistics::FAlgorithmInstance::~FAlgorithmInstance()
@@ -16,7 +16,7 @@ Tpx3RadiationAngleStatistics::FAlgorithmInstance::~FAlgorithmInstance()
 void Tpx3RadiationAngleStatistics::FAlgorithmInstance::FinishInstance()
 {
 	Active = false;
-	RunTime = GetTickCount64() - startTime;
+	RunTime = std::chrono::high_resolution_clock::now() - this->startTime;
 }
 
 void Tpx3RadiationAngleStatistics::FAlgorithmInstance::AddRepeat()
@@ -69,16 +69,16 @@ uint64_t Tpx3RadiationAngleStatistics::GetAverageCicles()
 	return TotalCicles/Instances.size();
 }
 
-uint64_t Tpx3RadiationAngleStatistics::GetAverageRunTime()
+std::chrono::nanoseconds Tpx3RadiationAngleStatistics::GetAverageRunTime()
 {
-	unsigned long long TotalTime = GetTotalRunTime();
+	std::chrono::nanoseconds TotalTime = GetTotalRunTime();
 
 	return TotalTime/Instances.size();
 }
 
-unsigned long long Tpx3RadiationAngleStatistics::GetTotalRunTime()
+std::chrono::nanoseconds Tpx3RadiationAngleStatistics::GetTotalRunTime()
 {
-	unsigned long long TotalTime = 0;
+	std::chrono::nanoseconds TotalTime;
 	for (auto i : Instances)
 		TotalTime += i.RunTime;
 	return TotalTime;

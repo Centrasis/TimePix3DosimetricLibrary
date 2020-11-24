@@ -4,6 +4,7 @@
 #include <vector>
 #include "MultiplattformTypes.h"
 #include <mutex>
+#include <chrono>
 
 const size_t NO_ALGORITHM_IDX = MAXINT64;
 
@@ -15,11 +16,11 @@ public:
 	{
 		friend Tpx3RadiationAngleStatistics;
 	private:
-		unsigned long long RunTime = 0;
+		std::chrono::nanoseconds RunTime;
 		size_t CiclesTillTerminiation = 0;
 		size_t AlgorithmRepeats = 0;
 		bool Active = true;
-		unsigned long long startTime;
+		std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 	public:
 		FAlgorithmInstance();
 		~FAlgorithmInstance();
@@ -34,8 +35,8 @@ public:
 	float GetProbabilityForNoResult();
 	float GetProbabilityForOneRepeat();
 	uint64_t GetAverageCicles();
-	uint64_t GetAverageRunTime();
-	unsigned long long GetTotalRunTime();
+	std::chrono::nanoseconds GetAverageRunTime();
+	std::chrono::nanoseconds GetTotalRunTime();
 
 	void Reset()
 	{
