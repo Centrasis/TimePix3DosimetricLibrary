@@ -225,7 +225,7 @@ bool PostprocessingThread::EvaluateSegmentReady(size_t & amount)
 			std::vector<std::thread> runningAsyncThreads;
 			for (int i = 0; i < OutOfOrderExecutedShadowMethods.size(); i++)
 			{
-				runningAsyncThreads.push_back(std::thread(OutOfOrderExecutedShadowMethods[i], s->img, s->angles, s->shadows, s->timeStamp_ns));
+				runningAsyncThreads.push_back(std::thread(OutOfOrderExecutedShadowMethods[i], s->img, std::ref(s->angles), std::ref(s->shadows), s->timeStamp_ns));
 			}
 
 			for (int i = 0; i < InOrderExecutedShadowMethods.size(); i++)
