@@ -1,6 +1,4 @@
 #pragma once
-
-#include <Windows.h>
 #include <thread>
 #include "KatherineTpx3.h"
 
