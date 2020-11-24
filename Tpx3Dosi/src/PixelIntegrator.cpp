@@ -80,7 +80,6 @@ PixelIntegrator::~PixelIntegrator()
 #ifdef __USE_OPENCL__
 	((OpenCLExecutor*)(&TimepixDataCLProc::getExecutor()))->ReleaseKernel(PixelIntegrateKernel);
 	DESTROYMUTEX(lock);
-	SegmentDataProcessingThread::~SegmentDataProcessingThread();
 #endif
 }
 

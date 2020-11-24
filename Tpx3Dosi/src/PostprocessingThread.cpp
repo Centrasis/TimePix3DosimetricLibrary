@@ -18,8 +18,6 @@ PostprocessingThread::~PostprocessingThread()
 {
 	InOrderExecutedRawMethods.clear();
 	OutOfOrderExecutedRawMethods.clear();
-
-	SegmentDataProcessingThread::~SegmentDataProcessingThread();
 }
 
 void PostprocessingThread::addProcessingMethod(FProcessingRawPixelEvent method, bool canBeExecutedIndependly)

@@ -40,7 +40,6 @@ PixelClusterer::~PixelClusterer()
 	delete[] blurredImg;
 	delete[] OCLMask;
 	delete gaussianKernel;
-	SegmentDataProcessingThread::~SegmentDataProcessingThread();
 }
 
 void PixelClusterer::setWorkImage(cv::Mat & img)
@@ -207,7 +206,7 @@ PixelClusterer::PixelClusterer(FClusteringMethod ClusteringAlgo, OCLVariable* pi
 
 PixelClusterer::~PixelClusterer()
 {
-	SegmentDataProcessingThread::~SegmentDataProcessingThread();
+	
 }
 
 void PixelClusterer::setWorkImage(cv::Mat & img)

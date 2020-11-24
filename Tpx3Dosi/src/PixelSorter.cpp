@@ -11,7 +11,6 @@ PixelSorter::PixelSorter(void(*SortAlgo)(OCLTypedVariable<katherine_px_f_toa_tot
 
 PixelSorter::~PixelSorter()
 {
-	SegmentDataProcessingThread::~SegmentDataProcessingThread();
 }
 
 void PixelSorter::SetOnNewPixelsSorted(std::function<void(size_t start, size_t end)> OnSorted)
