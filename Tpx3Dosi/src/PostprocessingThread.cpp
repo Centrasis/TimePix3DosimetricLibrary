@@ -230,7 +230,7 @@ bool PostprocessingThread::EvaluateSegmentReady(size_t & amount)
 
 			for (int i = 0; i < InOrderExecutedShadowMethods.size(); i++)
 			{
-				std::thread currentInOrderThread = std::thread(InOrderExecutedShadowMethods[i], s->img, s->angles, s->shadows, s->timeStamp_ns);
+				std::thread currentInOrderThread = std::thread(InOrderExecutedShadowMethods[i], s->img, std::ref(s->angles), std::ref(s->shadows), s->timeStamp_ns);
 				currentInOrderThread.join();
 			}
 
