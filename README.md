@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/170377406.svg)](https://zenodo.org/badge/latestdoi/170377406)
 # TimePix3DosimetricLibrary
 A basic library for dosimetric measurements with a TimePix3 detector
 
